@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Submeter Nova Ideia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+
+<div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Qual é a sua Eco-Ideia?</h1>
+
+    <form th:action="@{/ideias/salvar}" th:object="${idea}" method="post" class="space-y-6">
+
+        <div>
+            <label for="titulo" class="block text-lg font-medium text-gray-700">Título da Ideia</label>
+            <p class="text-sm text-gray-500 mb-2">Dê um nome curto e claro para sua sugestão.</p>
+            <input type="text" id="titulo" th:field="*{titulo}" class="w-full mt-1 p-3 border rounded-md focus:ring-green-500 focus:border-green-500" required/>
+        </div>
+
+        <div>
+            <label for="descricao" class="block text-lg font-medium text-gray-700">Descrição Detalhada</label>
+            <p class="text-sm text-gray-500 mb-2">Explique o problema que você identificou e como a sua ideia pode resolvê-lo.</p>
+            <textarea id="descricao" th:field="*{descricao}" rows="6" class="w-full mt-1 p-3 border rounded-md focus:ring-green-500 focus:border-green-500" required></textarea>
+        </div>
+
+        <div>
+            <label for="categoriaImpacto" class="block text-lg font-medium text-gray-700">Principal Categoria de Impacto</label>
+            <p class="text-sm text-gray-500 mb-2">Selecione a área que sua ideia mais vai beneficiar.</p>
+            <select id="categoriaImpacto" th:field="*{categoriaImpacto}" class="w-full mt-1 p-3 border rounded-md bg-white focus:ring-green-500 focus:border-green-500" required>
+                <option value="">Selecione uma categoria</option>
+                <option th:each="cat : ${T(br.com.ecoideas.model.CategoriaImpacto).values()}"
+                        th:value="${cat}"
+                        th:text="${cat.toString().replace('_', ' ')}"></option>
+            </select>
+        </div>
+
+        <div class="pt-4">
+            <button type="submit" class="w-full bg-green-700 hover:bg-green-800 text-white font-bold text-xl py-3 px-4 rounded-lg transition-colors duration-200">
+                Enviar Minha Ideia
+            </button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Eco-Ideias - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="min-h-screen flex items-center justify-center bg-green-50 px-4">
+    <div class="w-full max-w-md shadow-lg border-0 bg-white rounded-lg">
+        <div class="text-center pb-6 pt-8">
+            <div class="mx-auto mb-4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600">
+                    <path d="M11 20A7 7 0 0 1 4 13H2a9 9 0 0 0 18 0h-2a7 7 0 0 1-7 7Z"></path>
+                    <path d="M12 12A4.95 4.95 0 0 1 17 7h2a7 7 0 0 0-14 0h2a4.95 4.95 0 0 1 5 5Z"></path>
+                </svg>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Eco-Ideias</h1>
+        </div>
+        <div class="px-8 pb-8">
+            <form th:action="@{/login}" method="post" class="space-y-6">
+                <div class="space-y-2">
+                    <label for="username" class="text-sm font-medium text-gray-700">Email</label>
+                    <input id="username" name="username" type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Digite seu email" required />
+                </div>
+                <div class="space-y-2">
+                    <label for="password" class="text-sm font-medium text-gray-700">Senha</label>
+                    <input id="password" name="password" type="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Digite sua senha" required />
+                </div>
+                <button type="submit" class="w-full bg-green-700 hover:bg-green-800 text-white font-medium py-2 px-4 rounded-md">Entrar</button>
+                <div class="text-center">
+                    <a href="#" class="text-sm text-green-600 hover:text-green-700 hover:underline">Esqueci minha senha</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
