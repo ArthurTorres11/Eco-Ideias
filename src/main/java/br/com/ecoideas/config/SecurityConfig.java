@@ -1,4 +1,3 @@
-// src/main/java/br/com/ecoideas/config/SecurityConfig.java
 package br.com.ecoideas.config;
 
 import org.springframework.context.annotation.Bean;
@@ -22,7 +21,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        // AQUI ESTÁ A MUDANÇA:
                         .requestMatchers("/login", "/usuarios/novo", "/usuarios/salvar", "/css/**", "/js/**").permitAll()
                         .anyRequest().authenticated()
                 )

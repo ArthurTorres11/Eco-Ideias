@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Usuário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+<div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Cadastrar Novo Usuário</h1>
+
+    <form th:action="@{/usuarios/salvar}" th:object="${usuario}" method="post" class="space-y-4">
+
+        <div>
+            <label for="nome" class="block text-sm font-medium text-gray-700">Nome Completo:</label>
+            <input type="text" id="nome" th:field="*{nome}" class="w-full mt-1 p-2 border border-gray-300 rounded-md" required/>
+        </div>
+
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+            <input type="email" id="email" th:field="*{email}" class="w-full mt-1 p-2 border border-gray-300 rounded-md" required/>
+        </div>
+
+        <div>
+            <label for="cpf" class="block text-sm font-medium text-gray-700">CPF (apenas números):</label>
+            <input type="text" id="cpf" th:field="*{cpf}" class="w-full mt-1 p-2 border border-gray-300 rounded-md" required/>
+        </div>
+
+        <div>
+            <label for="senha" class="block text-sm font-medium text-gray-700">Senha:</label>
+            <input type="password" id="senha" th:field="*{senha}" class="w-full mt-1 p-2 border border-gray-300 rounded-md" required/>
+        </div>
+
+        <div>
+            <label for="role" class="block text-sm font-medium text-gray-700">Perfil:</label>
+            <select id="role" th:field="*{role}" class="w-full mt-1 p-2 border border-gray-300 rounded-md bg-white" required>
+                <option th:each="roleValue : ${T(br.com.ecoideas.model.Role).values()}"
+                        th:value="${roleValue}"
+                        th:text="${roleValue}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="registroEmpresa" class="block text-sm font-medium text-gray-700">Registro da Empresa (Opcional):</label>
+            <input type="text" id="registroEmpresa" th:field="*{registroEmpresa}" class="w-full mt-1 p-2 border border-gray-300 rounded-md"/>
+        </div>
+
+        <div class="pt-2">
+            <button type="submit" class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700">Salvar Usuário</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
